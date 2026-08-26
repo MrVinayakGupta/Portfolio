@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
@@ -18,9 +19,15 @@ export default function Footer() {
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className={`flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b ${
-          isDark ? 'border-slate-900' : 'border-amber-100'
-        }`}>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className={`flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b ${
+            isDark ? 'border-slate-900' : 'border-amber-100'
+          }`}
+        >
           {/* Brand */}
           <div className="flex items-center gap-3">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-extrabold text-xs shadow-md ${
@@ -31,7 +38,7 @@ export default function Footer() {
               VG
             </div>
             <div>
-              <div className={`font-bold text-sm font-display ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              <div className={`font-bold text-sm font-serif ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 {personalInfo.name}
               </div>
               <div className={`text-[11px] font-mono font-medium ${
@@ -108,7 +115,7 @@ export default function Footer() {
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-3">

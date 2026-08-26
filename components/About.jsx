@@ -23,7 +23,6 @@ export default function About() {
       title: "MERN Stack Engineering",
       color: isDark ? "text-sky-400" : "text-amber-700",
       bgColor: isDark ? "bg-sky-500/10" : "bg-amber-500/15",
-      borderColor: isDark ? "border-slate-800" : "border-amber-200",
       description: "End-to-end applications built with React.js, Next.js, Node.js, Express, and MongoDB using scalable MVC structures and state management."
     },
     {
@@ -31,7 +30,6 @@ export default function About() {
       title: "Performance & SSR",
       color: isDark ? "text-amber-400" : "text-yellow-700",
       bgColor: isDark ? "bg-amber-500/10" : "bg-yellow-500/15",
-      borderColor: isDark ? "border-slate-800" : "border-amber-200",
       description: "Lighthouse 98/100 UI speed, sub-100ms API response latency, and CDN image asset delivery with Cloudinary."
     },
     {
@@ -39,7 +37,6 @@ export default function About() {
       title: "Resilient Auth & Security",
       color: isDark ? "text-emerald-400" : "text-emerald-700",
       bgColor: isDark ? "bg-emerald-500/10" : "bg-emerald-500/15",
-      borderColor: isDark ? "border-slate-800" : "border-amber-200",
       description: "Stateless JWT authentication, Bcrypt password salting, centralized async error handlers, and protected API routes."
     },
     {
@@ -47,7 +44,6 @@ export default function About() {
       title: "Modern Agile Standards",
       color: isDark ? "text-purple-400" : "text-amber-800",
       bgColor: isDark ? "bg-purple-500/10" : "bg-amber-500/15",
-      borderColor: isDark ? "border-slate-800" : "border-amber-200",
       description: "Clean Git workflows, Postman API contract testing, component reusability, and continuous software refinement."
     }
   ];
@@ -58,8 +54,14 @@ export default function About() {
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Minimalist Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        {/* Minimalist Section Header with Scroll Reveal */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center text-center mb-16"
+        >
           <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono mb-3 ${
             isDark 
               ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400' 
@@ -69,10 +71,10 @@ export default function About() {
             <span>01. ABOUT VINAYAK</span>
           </div>
           
-          <h2 className={`text-3xl sm:text-4xl font-extrabold tracking-tight font-display ${
+          <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Building Web Solutions with <span className="gradient-accent">Precision</span>
+            Building Web Solutions with <span className="gradient-accent italic">Precision</span>
           </h2>
           
           <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
@@ -80,17 +82,23 @@ export default function About() {
           }`}>
             Bridging computer science fundamentals with modern production full-stack engineering to build resilient digital experiences.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Narrative & Metrics */}
+        {/* Narrative & Metrics with Synchronized Stagger */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-16">
           
-          {/* Main Story Card */}
-          <div className={`lg:col-span-7 glass-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between ${
-            isDark ? 'text-slate-200' : 'text-slate-800'
-          }`}>
+          {/* Main Story Card (Slide from Left) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className={`lg:col-span-7 glass-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between ${
+              isDark ? 'text-slate-200' : 'text-slate-800'
+            }`}
+          >
             <div className="space-y-4">
-              <h3 className={`text-xl font-bold flex items-center gap-2 font-display ${
+              <h3 className={`text-xl sm:text-2xl font-bold flex items-center gap-2 font-serif ${
                 isDark ? 'text-white' : 'text-slate-900'
               }`}>
                 <GraduationCap className={`w-5 h-5 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
@@ -123,7 +131,7 @@ export default function About() {
             <div className={`mt-6 pt-6 border-t flex items-center justify-between text-xs ${
               isDark ? 'border-slate-800 text-slate-400' : 'border-amber-100 text-slate-500'
             }`}>
-              <span className="italic">"Crafting clean code through hands-on experience and real feedback."</span>
+              <span className="italic font-serif">"Crafting clean code through hands-on experience and real feedback."</span>
               <a 
                 href="#projects" 
                 className={`font-semibold flex items-center gap-1 transition-colors ${
@@ -134,18 +142,25 @@ export default function About() {
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Minimalist Metrics Grid */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+          {/* Minimalist Metrics Grid (Slide from Right) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 grid grid-cols-2 gap-4"
+          >
             {personalInfo.stats.map((stat, idx) => (
-              <div 
+              <motion.div 
                 key={idx} 
+                whileHover={{ scale: 1.03 }}
                 className={`glass-card p-6 rounded-3xl flex flex-col justify-center items-center text-center transition-all ${
                   isDark ? 'hover:border-sky-500/40' : 'hover:border-amber-400'
                 }`}
               >
-                <div className={`text-3xl sm:text-4xl font-extrabold font-display ${
+                <div className={`text-3xl sm:text-4xl font-extrabold font-serif ${
                   isDark ? 'text-sky-400' : 'text-amber-600'
                 }`}>
                   {stat.value}
@@ -160,27 +175,32 @@ export default function About() {
                 }`}>
                   {stat.desc}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
         </div>
 
-        {/* 4 Pillars Grid */}
+        {/* 4 Pillars Grid with Cascading Stagger */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div 
+              <motion.div 
                 key={idx}
-                className={`glass-card p-6 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -5 }}
+                className={`glass-card p-6 rounded-3xl border transition-all duration-300 ${
                   isDark ? 'border-slate-800/80 hover:bg-slate-900/60' : 'border-amber-200/80 hover:bg-white'
                 }`}
               >
                 <div className={`w-11 h-11 rounded-2xl ${item.bgColor} ${item.color} flex items-center justify-center mb-4 shadow-sm`}>
                   <Icon className="w-5 h-5" />
                 </div>
-                <h4 className={`text-sm font-bold mb-1.5 font-display ${
+                <h4 className={`text-sm font-bold mb-1.5 font-serif ${
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}>{item.title}</h4>
                 <p className={`text-xs leading-relaxed ${
@@ -188,7 +208,7 @@ export default function About() {
                 }`}>
                   {item.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
