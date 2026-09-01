@@ -62,7 +62,7 @@ export default function About({ theme }) {
               : 'bg-amber-500/15 border border-amber-400 text-amber-800 font-semibold'
           }`}>
             <Sparkles className="w-3.5 h-3.5" />
-            <span>01. ABOUT VINAYAK</span>
+            <span>01. ABOUT ME</span>
           </div>
           
           <h2 className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${
