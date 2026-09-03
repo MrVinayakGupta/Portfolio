@@ -12,7 +12,8 @@ import {
   Copy, 
   Check, 
   MessageSquare, 
-  CheckCircle2 
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { personalInfo } from '../data/portfolioData';
@@ -90,48 +91,46 @@ export default function Contact() {
 
   return (
     <section id="contact" className={`py-28 relative overflow-hidden transition-colors duration-300 ${
-      isDark ? 'bg-[#080c16]' : 'bg-[#faf9f6]'
+      isDark ? 'bg-[#05070d]' : 'bg-[#fbfaf8]'
     }`}>
       {/* Ambient background glow */}
-      <div className={`absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full blur-[140px] pointer-events-none -z-10 ${
+      <div className={`absolute bottom-0 right-1/4 w-[450px] h-[450px] rounded-full blur-[150px] pointer-events-none -z-10 ${
         isDark ? 'bg-sky-500/10' : 'bg-amber-400/12'
       }`} />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Scroll Reveal */}
+        {/* Section Header with Architectural Index */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-start mb-16 border-b pb-6"
+          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
         >
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono mb-3 ${
-            isDark 
-              ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400' 
-              : 'bg-amber-500/15 border border-amber-400 text-amber-900 font-semibold'
-          }`}>
-            <Mail className="w-3 h-3" />
-            <span>06. LET'S CONNECT</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-2">
+            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>START A PROJECT / HIRE</span>
+            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>GET IN TOUCH WITH VINAYAK</span>
           </div>
           
-          <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
+          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Get in Touch with <span className="gradient-accent italic">Vinayak</span>
+            Let's Engineer Something <span className="gradient-accent italic">Exceptional</span>
           </h2>
           
           <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Open for full-time software engineering roles, contracts, and technical discussions. Reach out directly or submit a message below.
+            Available for full-time software engineering roles, high-throughput backend contracts, and technical discussions.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Direct Contacts (Slide from Left) */}
+          {/* Left Column: Direct Contacts */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -258,7 +257,7 @@ export default function Contact() {
 
             {/* Social Links */}
             <div className={`p-4 rounded-2xl border flex items-center justify-around ${
-              isDark ? 'bg-[#0b101d] border-slate-800' : 'bg-white border-amber-200 shadow-sm'
+              isDark ? 'bg-[#0a0f1d] border-slate-800' : 'bg-white border-amber-200 shadow-sm'
             }`}>
               <a
                 href={personalInfo.linkedin}
@@ -287,7 +286,7 @@ export default function Contact() {
 
           </motion.div>
 
-          {/* Right Column: Contact Message Form (Slide from Right) */}
+          {/* Right Column: Contact Message Form */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -302,13 +301,13 @@ export default function Contact() {
                 isDark ? 'text-white' : 'text-slate-900'
               }`}>
                 <MessageSquare className={`w-5 h-5 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
-                <span>Send a Message</span>
+                <span>Send a Direct Inquiry</span>
               </h3>
               
               <p className={`text-xs sm:text-sm mb-6 ${
                 isDark ? 'text-slate-400' : 'text-slate-600'
               }`}>
-                Leave your details below to send an inquiry directly to Vinayak.
+                Leave your project specs or opportunity details below.
               </p>
 
               {/* Status Alert */}
@@ -381,7 +380,7 @@ export default function Contact() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder="e.g. Full-Time Opportunity / Project Discussion"
+                    placeholder="e.g. Full-Time Role / High-Throughput Web App"
                     className={`w-full px-4 py-3 rounded-2xl text-sm focus:outline-none transition-all border ${
                       isDark 
                         ? 'bg-[#080d1a] border-slate-800 text-white focus:border-sky-500 placeholder:text-slate-600' 
@@ -402,7 +401,7 @@ export default function Contact() {
                     rows="4"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Hi Vinayak, I saw your portfolio and would like to connect regarding..."
+                    placeholder="Hi Vinayak, we came across your portfolio and would like to connect regarding..."
                     className={`w-full px-4 py-3 rounded-2xl text-sm focus:outline-none transition-all resize-none border ${
                       isDark 
                         ? 'bg-[#080d1a] border-slate-800 text-white focus:border-sky-500 placeholder:text-slate-600' 
@@ -414,18 +413,18 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl text-white font-bold text-sm shadow-lg transition-all active:scale-98 disabled:opacity-50 ${
+                  className={`w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl text-white font-bold text-sm shadow-xl transition-all active:scale-98 disabled:opacity-50 ${
                     isDark
                       ? 'bg-gradient-to-r from-sky-500 via-indigo-600 to-purple-600 hover:from-sky-400 hover:to-purple-500 shadow-sky-500/20'
                       : 'bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 shadow-amber-500/30'
                   }`}
                 >
                   {loading ? (
-                    <span>Sending...</span>
+                    <span>Dispatching Inquiry...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Send Message</span>
+                      <span>Send Project Inquiry</span>
                     </>
                   )}
                 </button>

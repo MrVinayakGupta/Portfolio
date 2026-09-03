@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import Marquee from '../components/Marquee';
 import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
@@ -11,6 +12,7 @@ import DevTerminal from '../components/DevTerminal';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import ResumeModal from '../components/ResumeModal';
+import CustomCursor from '../components/CustomCursor';
 import { useTheme } from '../components/ThemeProvider';
 
 export default function Home() {
@@ -18,15 +20,19 @@ export default function Home() {
   const { isDark } = useTheme();
 
   return (
-    <div className={`min-h-screen transition-colors duration-400 ${
-      isDark ? 'bg-[#080c16] text-slate-100' : 'bg-[#faf9f6] text-slate-900'
+    <div className={`min-h-screen transition-colors duration-400 select-auto ${
+      isDark ? 'bg-[#05070d] text-slate-100' : 'bg-[#fbfaf8] text-slate-900'
     }`}>
-      {/* Floating Minimalist Header */}
+      {/* Luxury Trailing Custom Cursor */}
+      <CustomCursor />
+
+      {/* Floating Minimalist Frosted Glass Navigation */}
       <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
       {/* Main Content Sections */}
       <main>
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
+        <Marquee />
         <About />
         <Skills />
         <Projects />

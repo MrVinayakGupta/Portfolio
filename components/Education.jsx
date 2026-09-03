@@ -21,39 +21,37 @@ export default function Education() {
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Scroll Reveal */}
+        {/* Section Header with Architectural Index */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-start mb-16 border-b pb-6"
+          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
         >
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono mb-3 ${
-            isDark 
-              ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400' 
-              : 'bg-amber-500/15 border border-amber-400 text-amber-900 font-semibold'
-          }`}>
-            <GraduationCap className="w-3 h-3" />
-            <span>04. EDUCATION & CREDENTIALS</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-2">
+            <span className={isDark ? "text-emerald-400 font-bold" : "text-amber-700 font-bold"}>Fig. 05 / 06</span>
+            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>ACADEMIC DEGREES & VERIFIED CERTIFICATIONS</span>
           </div>
           
-          <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
+          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Academic & <span className="gradient-accent italic">Certifications</span>
+            Academic Foundations & <span className="gradient-accent italic">Certificates</span>
           </h2>
           
           <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Academic foundation in Computer Science and verified industry-recognized software engineering credentials.
+            Computer Science academic background combined with rigorous, verified full-stack software engineering accreditations.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left: Academic Timeline (Slide in from Left) */}
+          {/* Left: Academic Timeline */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -135,7 +133,7 @@ export default function Education() {
             </div>
           </motion.div>
 
-          {/* Right: Verified Certifications (Slide in from Right) */}
+          {/* Right: Verified Certifications */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -147,7 +145,7 @@ export default function Education() {
               isDark ? 'text-white' : 'text-slate-900'
             }`}>
               <Award className="w-4 h-4 text-amber-500" />
-              <span>Verified Industry Certifications</span>
+              <span>Verified Industry Accreditations</span>
             </h3>
 
             <div className="space-y-4">

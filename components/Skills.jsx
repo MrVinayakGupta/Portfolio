@@ -48,43 +48,41 @@ export default function Skills() {
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header with Scroll Animation */}
+        {/* Header with Architectural Index */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center mb-12"
+          className="flex flex-col items-start mb-12 border-b pb-6"
+          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
         >
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono mb-3 ${
-            isDark 
-              ? 'bg-indigo-500/10 border border-indigo-500/20 text-indigo-400' 
-              : 'bg-amber-500/15 border border-amber-400 text-amber-900 font-semibold'
-          }`}>
-            <Cpu className="w-3 h-3" />
-            <span>02. TECHNICAL MATRIX</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-2">
+            <span className={isDark ? "text-indigo-400 font-bold" : "text-amber-700 font-bold"}>Fig. 03 / 06</span>
+            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>TECHNICAL STACK & COMPETENCY</span>
           </div>
           
-          <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
+          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Skills & <span className="gradient-accent italic">Capabilities</span>
+            Engineering Skills & <span className="gradient-accent italic">Capabilities</span>
           </h2>
           
           <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Engineered with modern full-stack standards—from responsive React components to optimized MongoDB schemas and secure REST APIs.
+            A production-ready technical matrix spanning modern full-stack development, distributed REST APIs, and database engineering.
           </p>
         </motion.div>
 
-        {/* Minimalist Tabs with Scroll Animation */}
+        {/* Minimalist Tabs */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap justify-center items-center gap-2 mb-12"
+          className="flex flex-wrap justify-start items-center gap-2 mb-12"
         >
           {categories.map((cat) => {
             const Icon = cat.icon;
@@ -110,7 +108,7 @@ export default function Skills() {
           })}
         </motion.div>
 
-        {/* Skills Grid with Animated Re-order & Scroll Reveal */}
+        {/* Skills Grid */}
         <motion.div 
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -126,7 +124,7 @@ export default function Skills() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.45, delay: idx * 0.04 }}
                 whileHover={{ y: -4 }}
-                className={`glass-card p-4 sm:p-5 rounded-2xl border transition-all duration-300 group ${
+                className={`glass-card p-5 rounded-2xl border transition-all duration-300 group ${
                   isDark 
                     ? 'border-slate-800/80 hover:border-sky-500/40 hover:bg-slate-900/80' 
                     : 'border-amber-200/80 hover:border-amber-400 hover:bg-white shadow-sm'
@@ -155,7 +153,7 @@ export default function Skills() {
                   </div>
                 </div>
 
-                {/* Progress bar with synchronized animated width */}
+                {/* Progress bar */}
                 <div className={`w-full h-1 rounded-full overflow-hidden ${
                   isDark ? 'bg-slate-800' : 'bg-amber-100'
                 }`}>

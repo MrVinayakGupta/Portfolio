@@ -9,7 +9,9 @@ import {
   GitBranch, 
   GraduationCap, 
   Sparkles,
-  ArrowUpRight
+  ArrowUpRight,
+  Database,
+  Layers
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
@@ -20,74 +22,76 @@ export default function About() {
   const pillars = [
     {
       icon: Code2,
+      number: "01",
       title: "MERN Stack Engineering",
       color: isDark ? "text-sky-400" : "text-amber-700",
       bgColor: isDark ? "bg-sky-500/10" : "bg-amber-500/15",
-      description: "End-to-end applications built with React.js, Next.js, Node.js, Express, and MongoDB using scalable MVC structures and state management."
+      description: "End-to-end applications built with React.js, Next.js 14, Node.js, Express, and MongoDB utilizing scalable modular MVC patterns and optimized state pipelines."
     },
     {
       icon: Zap,
-      title: "Performance & SSR",
+      number: "02",
+      title: "Performance & SSR Optimization",
       color: isDark ? "text-amber-400" : "text-yellow-700",
       bgColor: isDark ? "bg-amber-500/10" : "bg-yellow-500/15",
-      description: "Lighthouse 98/100 UI speed, sub-100ms API response latency, and CDN image asset delivery with Cloudinary."
+      description: "Lighthouse 98/100 UI responsiveness, sub-100ms API response latency, and CDN image asset delivery with Cloudinary and Multer integration."
     },
     {
       icon: ShieldCheck,
-      title: "Resilient Auth & Security",
+      number: "03",
+      title: "Resilient Auth & Cryptography",
       color: isDark ? "text-emerald-400" : "text-emerald-700",
       bgColor: isDark ? "bg-emerald-500/10" : "bg-emerald-500/15",
-      description: "Stateless JWT authentication, Bcrypt password salting, centralized async error handlers, and protected API routes."
+      description: "Stateless JSON Web Token (JWT) authentication, Bcrypt password salting protocols, centralized error handlers, and guarded route middleware."
     },
     {
-      icon: GitBranch,
-      title: "Modern Agile Standards",
+      icon: Database,
+      number: "04",
+      title: "Data Pipelines & Schema Indexing",
       color: isDark ? "text-purple-400" : "text-amber-800",
       bgColor: isDark ? "bg-purple-500/10" : "bg-amber-500/15",
-      description: "Clean Git workflows, Postman API contract testing, component reusability, and continuous software refinement."
+      description: "Optimized MongoDB schema indexing accelerating query response by 35%, schema validation via Mongoose, and relational SQL structure design."
     }
   ];
 
   return (
     <section id="about" className={`py-28 relative transition-colors duration-300 ${
-      isDark ? 'bg-[#080c16]' : 'bg-[#faf9f6]'
+      isDark ? 'bg-[#05070d]' : 'bg-[#fbfaf8]'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Minimalist Section Header with Scroll Reveal */}
+        {/* Section Header with Architectural Index */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-start mb-16 border-b pb-6"
+          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
         >
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono mb-3 ${
-            isDark 
-              ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400' 
-              : 'bg-amber-500/15 border border-amber-400 text-amber-900 font-semibold'
-          }`}>
-            <Sparkles className="w-3 h-3" />
-            <span>01. ABOUT VINAYAK</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-2">
+            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>Fig. 02 / 06</span>
+            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>PHILOSOPHY & CAPABILITY</span>
           </div>
           
-          <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
+          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Building Web Solutions with <span className="gradient-accent italic">Precision</span>
+            Building Digital Systems for the Way <span className="gradient-accent italic block sm:inline">People Live & Work</span>
           </h2>
           
-          <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
+          <p className={`max-w-2xl mt-4 text-sm sm:text-base leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Bridging computer science fundamentals with modern production full-stack engineering to build resilient digital experiences.
+            Approaching software architecture with clarity, structural precision, and close attention to detail—from schema design to fluid user interfaces.
           </p>
         </motion.div>
 
-        {/* Narrative & Metrics with Synchronized Stagger */}
+        {/* Narrative & Metrics Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-16">
           
-          {/* Main Story Card (Slide from Left) */}
+          {/* Narrative Card */}
           <motion.div 
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -102,7 +106,7 @@ export default function About() {
                 isDark ? 'text-white' : 'text-slate-900'
               }`}>
                 <GraduationCap className={`w-5 h-5 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
-                <span>Background & Engineering Philosophy</span>
+                <span>Engineering Background</span>
               </h3>
               
               <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
@@ -110,7 +114,7 @@ export default function About() {
               </p>
 
               <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
-                My core expertise is centered around the <strong className={isDark ? "text-sky-400" : "text-amber-700"}>MERN stack</strong> and modern React/Next.js workflows. Whether optimizing MongoDB aggregations to accelerate retrieval by 35%, configuring Cloudinary CDNs to boost media delivery by 50%, or architecting bulletproof JWT authentication pipelines, I prioritize performance, scalability, and code cleanliness.
+                My technical philosophy emphasizes scalable foundations: creating resilient MVC backends in Node/Express, indexing NoSQL documents in MongoDB for 35% speed gains, offloading heavy media to Cloudinary CDNs, and crafting ultra-responsive React & Next.js user interfaces with zero hydration overhead.
               </p>
 
               <div className="pt-3 flex flex-wrap gap-2 text-xs font-mono">
@@ -144,7 +148,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Minimalist Metrics Grid (Slide from Right) */}
+          {/* Metrics Grid */}
           <motion.div 
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -181,7 +185,7 @@ export default function About() {
 
         </div>
 
-        {/* 4 Pillars Grid with Cascading Stagger */}
+        {/* 4 Pillars Grid (Architectural Style) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((item, idx) => {
             const Icon = item.icon;
@@ -193,16 +197,23 @@ export default function About() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -5 }}
-                className={`glass-card p-6 rounded-3xl border transition-all duration-300 ${
+                className={`glass-card p-6 rounded-3xl border transition-all duration-300 relative ${
                   isDark ? 'border-slate-800/80 hover:bg-slate-900/60' : 'border-amber-200/80 hover:bg-white'
                 }`}
               >
-                <div className={`w-11 h-11 rounded-2xl ${item.bgColor} ${item.color} flex items-center justify-center mb-4 shadow-sm`}>
-                  <Icon className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`w-10 h-10 rounded-2xl ${item.bgColor} ${item.color} flex items-center justify-center shadow-sm`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <span className={`text-xs font-mono font-bold ${isDark ? 'text-slate-600' : 'text-amber-300'}`}>
+                    {item.number}
+                  </span>
                 </div>
+
                 <h4 className={`text-sm font-bold mb-1.5 font-serif ${
                   isDark ? 'text-white' : 'text-slate-900'
                 }`}>{item.title}</h4>
+                
                 <p className={`text-xs leading-relaxed ${
                   isDark ? 'text-slate-400' : 'text-slate-600'
                 }`}>

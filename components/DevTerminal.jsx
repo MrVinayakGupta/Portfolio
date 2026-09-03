@@ -12,7 +12,7 @@ export default function DevTerminal() {
   const [history, setHistory] = useState([
     {
       type: 'system',
-      text: `Vinayak OS v2.0 (x86_64-fullstack)\nType 'help' or click any quick command chip below to explore.\n-----------------------------------------------------------`
+      text: `Vinayak Architecture Engine v2.5 (x86_64-fullstack)\nType 'help' or click any quick command chip below to explore.\n-----------------------------------------------------------`
     }
   ]);
   const [copied, setCopied] = useState(false);
@@ -61,25 +61,23 @@ export default function DevTerminal() {
 
   return (
     <section id="terminal" className={`py-28 relative transition-colors duration-300 ${
-      isDark ? 'bg-[#080c16]' : 'bg-[#faf9f6]'
+      isDark ? 'bg-[#05070d]' : 'bg-[#fbfaf8]'
     }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Scroll Reveal */}
+        {/* Section Header with Architectural Index */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center mb-12"
+          className="flex flex-col items-start mb-12 border-b pb-6"
+          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
         >
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono mb-3 ${
-            isDark 
-              ? 'bg-purple-500/10 border border-purple-500/20 text-purple-400' 
-              : 'bg-amber-500/15 border border-amber-400 text-amber-900 font-semibold'
-          }`}>
-            <TerminalIcon className="w-3 h-3" />
-            <span>05. INTERACTIVE CONSOLE</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-2">
+            <span className={isDark ? "text-purple-400 font-bold" : "text-amber-700 font-bold"}>Fig. 06 / 06</span>
+            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>INTERACTIVE CONSOLE & QUERY ENGINE</span>
           </div>
           
           <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
@@ -91,26 +89,26 @@ export default function DevTerminal() {
           <p className={`max-w-md mt-2 text-xs sm:text-sm leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Run interactive terminal commands to query Vinayak's technical profile directly.
+            Run real-time console commands to inspect Vinayak's technical profile directly.
           </p>
         </motion.div>
 
-        {/* Minimalist Terminal Window with Scroll Reveal */}
+        {/* Minimalist Terminal Window */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.96, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`rounded-3xl border shadow-xl overflow-hidden ${
+          className={`rounded-3xl border shadow-2xl overflow-hidden ${
             isDark 
-              ? 'bg-[#0b101d] border-slate-800' 
+              ? 'bg-[#0a0f1d] border-slate-800' 
               : 'bg-white border-amber-300 shadow-luxury'
           }`}
         >
           
           {/* Header Bar */}
-          <div className={`flex items-center justify-between px-5 py-3 border-b ${
-            isDark ? 'bg-[#070b14] border-slate-800' : 'bg-amber-50/70 border-amber-200'
+          <div className={`flex items-center justify-between px-5 py-3.5 border-b ${
+            isDark ? 'bg-[#060913] border-slate-800' : 'bg-amber-50/70 border-amber-200'
           }`}>
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
@@ -150,7 +148,7 @@ export default function DevTerminal() {
 
           {/* Quick Command Chips */}
           <div className={`px-5 py-2.5 border-b flex flex-wrap items-center gap-2 ${
-            isDark ? 'bg-[#080d1a] border-slate-800' : 'bg-amber-50/40 border-amber-100'
+            isDark ? 'bg-[#060913] border-slate-800' : 'bg-amber-50/40 border-amber-100'
           }`}>
             <span className={`text-[11px] font-mono ${
               isDark ? 'text-slate-500' : 'text-amber-800 font-semibold'
@@ -201,7 +199,7 @@ export default function DevTerminal() {
 
           {/* Terminal Input Form */}
           <form onSubmit={handleSubmit} className={`flex items-center gap-2 px-5 py-3 border-t ${
-            isDark ? 'bg-[#080d1a] border-slate-800' : 'bg-amber-50/70 border-amber-200'
+            isDark ? 'bg-[#060913] border-slate-800' : 'bg-amber-50/70 border-amber-200'
           }`}>
             <span className={`font-mono text-xs sm:text-sm shrink-0 font-bold ${
               isDark ? 'text-sky-400' : 'text-amber-700'

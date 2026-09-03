@@ -9,23 +9,23 @@
 
   body {
     overflow-x: hidden;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
 
   h1, h2, h3, h4, .font-editorial {
-    font-family: 'Playfair Display', Georgia, serif;
-    letter-spacing: -0.015em;
+    font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+    letter-spacing: -0.02em;
   }
 
-  /* Dark mode scrollbars */
+  /* Custom Scrollbar - Dark Mode */
   html.dark ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
   html.dark ::-webkit-scrollbar-track {
-    background: #080c16;
+    background: #05070d;
   }
   html.dark ::-webkit-scrollbar-thumb {
     background: #1e293b;
@@ -35,15 +35,15 @@
     background: #38bdf8;
   }
 
-  /* Light mode (Golden & White Luxury) scrollbars */
+  /* Custom Scrollbar - Light Mode (Golden & Ivory) */
   html.light ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
   html.light ::-webkit-scrollbar-track {
-    background: #fcfbfa;
+    background: #fbfaf8;
   }
   html.light ::-webkit-scrollbar-thumb {
-    background: #e7dfcb;
+    background: #e2d7c0;
     border-radius: 9999px;
   }
   html.light ::-webkit-scrollbar-thumb:hover {
@@ -53,26 +53,26 @@
 
 /* Luxury Glass Navbar */
 .navbar-glass-dark {
-  background: rgba(8, 12, 22, 0.75);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5);
+  background: rgba(5, 7, 13, 0.78);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.65);
 }
 
 .navbar-glass-light {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(217, 119, 6, 0.2);
-  box-shadow: 0 10px 35px -5px rgba(217, 119, 6, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(217, 119, 6, 0.22);
+  box-shadow: 0 16px 40px -10px rgba(217, 119, 6, 0.09);
 }
 
-/* Luxury Glassmorphism - Dark */
+/* Luxury Glassmorphism Cards - Dark */
 html.dark .glass-card {
-  background: rgba(14, 21, 38, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10, 14, 26, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -81,19 +81,19 @@ html.dark .glass-card-hover {
 }
 
 html.dark .glass-card-hover:hover {
-  background: rgba(20, 29, 52, 0.85);
+  background: rgba(15, 22, 41, 0.9);
   border-color: rgba(56, 189, 248, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px rgba(56, 189, 248, 0.15);
 }
 
-/* Luxury Glassmorphism - Light (Golden & Pure White) */
+/* Luxury Glassmorphism Cards - Light (Golden & Ivory) */
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(217, 119, 6, 0.18);
-  box-shadow: 0 12px 30px -10px rgba(217, 119, 6, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  box-shadow: 0 14px 35px -10px rgba(217, 119, 6, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 html.light .glass-card-hover {
@@ -102,9 +102,9 @@ html.light .glass-card-hover {
 
 html.light .glass-card-hover:hover {
   background: #ffffff;
-  border-color: rgba(217, 119, 6, 0.45);
+  border-color: rgba(217, 119, 6, 0.5);
   transform: translateY(-4px);
-  box-shadow: 0 25px 50px -12px rgba(217, 119, 6, 0.15), 0 0 25px rgba(245, 158, 11, 0.1);
+  box-shadow: 0 30px 60px -15px rgba(217, 119, 6, 0.16), 0 0 30px rgba(245, 158, 11, 0.1);
 }
 
 /* Gradients */
@@ -115,13 +115,13 @@ html.dark .gradient-heading {
 }
 
 html.light .gradient-heading {
-  background: linear-gradient(135deg, #0f172a 0%, #334155 60%, #475569 100%);
+  background: linear-gradient(135deg, #090d16 0%, #1e293b 60%, #334155 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 html.dark .gradient-accent {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 60%, #c084fc 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -132,17 +132,23 @@ html.light .gradient-accent {
   -webkit-text-fill-color: transparent;
 }
 
-/* Subtle Minimalist Grids */
+/* Architectural Subtle Grids & Borders */
 html.dark .bg-minimal-grid {
-  background-size: 50px 50px;
+  background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 }
 
 html.light .bg-minimal-grid {
-  background-size: 50px 50px;
+  background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(217, 119, 6, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(217, 119, 6, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(217, 119, 6, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.04) 1px, transparent 1px);
+}
+
+/* Noise overlay for cinematic look */
+.cinematic-noise {
+  background-image: radial-gradient(rgba(0,0,0,0) 1px, transparent 0);
+  background-size: 24px 24px;
 }
