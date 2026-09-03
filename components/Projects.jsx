@@ -25,41 +25,39 @@ export default function Projects() {
 
   return (
     <section id="projects" className={`py-28 relative transition-colors duration-300 ${
-      isDark ? 'bg-[#080c16]' : 'bg-[#faf9f6]'
+      isDark ? 'bg-[#05070d]' : 'bg-[#fbfaf8]'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Scroll Reveal */}
+        {/* Section Header with Architectural Index */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-start mb-16 border-b pb-6"
+          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
         >
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono mb-3 ${
-            isDark 
-              ? 'bg-sky-500/10 border border-sky-500/20 text-sky-400' 
-              : 'bg-amber-500/15 border border-amber-400 text-amber-900 font-semibold'
-          }`}>
-            <FolderGit2 className="w-3 h-3" />
-            <span>03. FEATURED WORK</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-2">
+            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>Fig. 04 / 06</span>
+            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>SELECTED PRODUCTION SYSTEMS</span>
           </div>
           
-          <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
+          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Engineering <span className="gradient-accent italic">Showcase</span>
+            Featured <span className="gradient-accent italic">Case Studies</span>
           </h2>
           
           <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Full-stack web applications featuring high-performance REST APIs, MongoDB data pipelines, secure authentication, and modern React interfaces.
+            Production-grade full-stack web applications featuring high-performance REST APIs, MongoDB data pipelines, secure authentication, and modern React interfaces.
           </p>
         </motion.div>
 
-        {/* Minimalist Projects Grid with Synchronized Stagger */}
+        {/* Minimalist Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {projectsData.map((project, idx) => (
             <motion.div
@@ -77,7 +75,7 @@ export default function Projects() {
               {/* Card Banner Header */}
               <div className={`p-6 sm:p-8 border-b ${
                 isDark 
-                  ? 'border-slate-800/80 bg-gradient-to-b from-[#0e1628] to-transparent' 
+                  ? 'border-slate-800/80 bg-gradient-to-b from-[#0a0f1d] to-transparent' 
                   : 'border-amber-100 bg-gradient-to-b from-amber-50/70 to-transparent'
               }`}>
                 <div className="flex items-center justify-between gap-2 mb-3">
@@ -89,12 +87,13 @@ export default function Projects() {
                     {project.badge}
                   </span>
                   
-                  <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-full border ${
+                  <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-full border flex items-center gap-1.5 ${
                     isDark 
                       ? 'text-emerald-400 bg-emerald-950/60 border-emerald-800/60' 
                       : 'text-emerald-800 bg-emerald-100 border-emerald-300'
                   }`}>
-                    {project.status}
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>{project.status}</span>
                   </span>
                 </div>
 
@@ -117,11 +116,11 @@ export default function Projects() {
                       key={i} 
                       className={`p-2.5 rounded-2xl border text-center ${
                         isDark 
-                          ? 'bg-[#080d1a] border-slate-800' 
+                          ? 'bg-[#060913] border-slate-800' 
                           : 'bg-white border-amber-200/80 shadow-sm'
                       }`}
                     >
-                      <div className={`text-xs sm:text-sm font-extrabold font-mono ${
+                      <div className={`text-xs sm:text-sm font-extrabold font-serif ${
                         isDark ? 'text-sky-400' : 'text-amber-700'
                       }`}>{metric.val}</div>
                       <div className={`text-[10px] truncate font-medium ${
@@ -140,7 +139,7 @@ export default function Projects() {
                   {project.summary}
                 </p>
 
-                {/* Bullets */}
+                {/* Highlights */}
                 <div className="space-y-2 pt-1">
                   {project.highlights.slice(0, 2).map((point, idx) => (
                     <div key={idx} className={`flex items-start gap-2.5 text-xs leading-relaxed ${
@@ -210,7 +209,7 @@ export default function Projects() {
                     }`}
                   >
                     <Info className={`w-3.5 h-3.5 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
-                    <span>Details</span>
+                    <span>Blueprint</span>
                   </button>
 
                   <a
@@ -234,7 +233,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Minimalist GitHub Banner with Scroll Reveal */}
+        {/* GitHub Banner */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
