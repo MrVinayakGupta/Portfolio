@@ -6,15 +6,14 @@ import {
   Code2, 
   Zap, 
   ShieldCheck, 
-  GitBranch, 
   GraduationCap, 
-  Sparkles,
   ArrowUpRight,
-  Database,
-  Layers
+  Database
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
+import LineDivider from './LineDivider';
+import { MaskedHeading } from './AnimatedText';
 
 export default function About() {
   const { isDark } = useTheme();
@@ -58,38 +57,36 @@ export default function About() {
     <section id="about" className={`py-28 relative transition-colors duration-300 ${
       isDark ? 'bg-[#05070d]' : 'bg-[#fbfaf8]'
     }`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Architectural Index */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start mb-16 border-b pb-6"
-          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
-        >
-          <div className="flex items-center gap-2 text-xs font-mono mb-2">
-            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>Fig. 02 / 06</span>
-            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
-            <span className={isDark ? "text-slate-400" : "text-slate-600"}>PHILOSOPHY & CAPABILITY</span>
+        {/* Section Header with Masked Typography */}
+        <div className="flex flex-col items-start mb-8">
+          <div className="flex items-center gap-2 text-xs font-mono mb-3">
+            <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>PHILOSOPHY & PRACTICE</span>
+            <span className="opacity-40">/</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>ABOUT VINAYAK</span>
           </div>
           
-          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
-            isDark ? 'text-white' : 'text-slate-900'
-          }`}>
-            Building Digital Systems for the Way <span className="gradient-accent italic block sm:inline">People Live & Work</span>
-          </h2>
-          
+          <MaskedHeading>
+            <h2 className={`text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-serif uppercase leading-[0.95] ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}>
+              Engineering for the Way <span className="gradient-accent italic block sm:inline font-normal">People Work</span>
+            </h2>
+          </MaskedHeading>
+
           <p className={`max-w-2xl mt-4 text-sm sm:text-base leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
             Approaching software architecture with clarity, structural precision, and close attention to detail—from schema design to fluid user interfaces.
           </p>
-        </motion.div>
+        </div>
+
+        <LineDivider />
 
         {/* Narrative & Metrics Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch my-12">
           
           {/* Narrative Card */}
           <motion.div 
@@ -97,16 +94,16 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={`lg:col-span-7 glass-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between ${
+            className={`lg:col-span-7 glass-card rounded-3xl p-7 sm:p-10 flex flex-col justify-between ${
               isDark ? 'text-slate-200' : 'text-slate-800'
             }`}
           >
             <div className="space-y-4">
-              <h3 className={`text-xl sm:text-2xl font-bold flex items-center gap-2 font-serif ${
+              <h3 className={`text-2xl sm:text-3xl font-bold flex items-center gap-2 font-serif ${
                 isDark ? 'text-white' : 'text-slate-900'
               }`}>
                 <GraduationCap className={`w-5 h-5 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
-                <span>Engineering Background</span>
+                <span>Background & Engineering Standards</span>
               </h3>
               
               <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
@@ -164,7 +161,7 @@ export default function About() {
                   isDark ? 'hover:border-sky-500/40' : 'hover:border-amber-400'
                 }`}
               >
-                <div className={`text-3xl sm:text-4xl font-extrabold font-serif ${
+                <div className={`text-3xl sm:text-5xl font-extrabold font-serif ${
                   isDark ? 'text-sky-400' : 'text-amber-600'
                 }`}>
                   {stat.value}
