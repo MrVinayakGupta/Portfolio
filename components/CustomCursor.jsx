@@ -1,34 +1,47 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
+  const [cursorText, setCursorText] = useState('');
   const [isHovered, setIsHovered] = useState(false);
+  const [isProject, setIsProject] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  const springConfig = { damping: 28, stiffness: 350, mass: 0.1 };
+  const cursorX = useSpring(mouseX, springConfig);
+  const cursorY = useSpring(mouseY, springConfig);
+
   useEffect(() => {
-    // Only enable on desktop with fine pointer
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
     };
 
     const handleMouseOver = (e) => {
       const target = e.target;
-      if (
-        target.tagName === 'BUTTON' ||
-        target.tagName === 'A' ||
-        target.closest('button') ||
-        target.closest('a') ||
-        target.getAttribute('role') === 'button'
-      ) {
+      const projectCard = target.closest('[data-cursor-project]');
+      const clickable = target.closest('button, a, [role="button"]');
+
+      if (projectCard) {
+        setIsProject(true);
         setIsHovered(true);
+        setCursorText('VIEW');
+      } else if (clickable) {
+        setIsProject(false);
+        setIsHovered(true);
+        setCursorText('');
       } else {
+        setIsProject(false);
         setIsHovered(false);
+        setCursorText('');
       }
     };
 
@@ -45,29 +58,44 @@ export default function CustomCursor() {
       window.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isVisible]);
+  }, [mouseX, mouseY, isVisible]);
 
   if (!isVisible) return null;
 
   return (
     <>
-      {/* Small dot follower */}
+      {/* Outer interactive follower ring / pill (Palomino style) */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center rounded-full mix-blend-difference font-mono text-[10px] font-extrabold tracking-widest text-black uppercase"
+        style={{
+          x: cursorX,
+          y: cursorY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
         animate={{
-          x: mousePosition.x - (isHovered ? 18 : 5),
-          y: mousePosition.y - (isHovered ? 18 : 5),
-          width: isHovered ? 36 : 10,
-          height: isHovered ? 36 : 10,
-          backgroundColor: '#ffffff'
+          width: isProject ? 76 : isHovered ? 44 : 14,
+          height: isProject ? 76 : isHovered ? 44 : 14,
+          backgroundColor: '#ffffff',
+          scale: 1,
         }}
         transition={{
           type: 'spring',
-          damping: 28,
-          stiffness: 400,
-          mass: 0.1
+          damping: 25,
+          stiffness: 300,
         }}
-      />
+      >
+        {cursorText && (
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className="text-black select-none pointer-events-none"
+          >
+            {cursorText}
+          </motion.span>
+        )}
+      </motion.div>
     </>
   );
 }

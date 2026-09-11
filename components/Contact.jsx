@@ -18,6 +18,7 @@ import {
 import confetti from 'canvas-confetti';
 import { personalInfo } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
+import LineDivider from './LineDivider';
 
 export default function Contact() {
   const { isDark } = useTheme();
@@ -98,21 +99,21 @@ export default function Contact() {
         isDark ? 'bg-sky-500/10' : 'bg-amber-400/12'
       }`} />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Architectural Index */}
+        {/* Section Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start mb-16 border-b pb-6"
-          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start mb-8"
         >
-          <div className="flex items-center gap-2 text-xs font-mono mb-2">
-            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>START A PROJECT / HIRE</span>
-            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
-            <span className={isDark ? "text-slate-400" : "text-slate-600"}>GET IN TOUCH WITH VINAYAK</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-3">
+            <span className="w-2 h-2 rounded-full bg-sky-500"></span>
+            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>DIRECT COMMUNICATION</span>
+            <span className="opacity-40">/</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>START A CONVERSATION</span>
           </div>
           
           <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
@@ -120,28 +121,30 @@ export default function Contact() {
           }`}>
             Let's Engineer Something <span className="gradient-accent italic">Exceptional</span>
           </h2>
-          
-          <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
+
+          <p className={`max-w-xl mt-4 text-sm sm:text-base leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
             Available for full-time software engineering roles, high-throughput backend contracts, and technical discussions.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <LineDivider />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-12">
           
           {/* Left Column: Direct Contacts */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8 }}
             className="lg:col-span-5 space-y-4"
           >
             
             {/* Email Card */}
             <div className={`glass-card p-6 rounded-3xl border transition-all flex items-start justify-between gap-4 group ${
-              isDark ? 'border-slate-800 hover:border-sky-500/40' : 'border-amber-200 hover:border-amber-400'
+              isDark ? 'border-slate-800 hover:border-sky-500/40' : 'border-amber-200 hover:border-amber-400 shadow-sm'
             }`}>
               <div className="flex items-start gap-4">
                 <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${
@@ -183,7 +186,7 @@ export default function Contact() {
 
             {/* Phone Card */}
             <div className={`glass-card p-6 rounded-3xl border transition-all flex items-start justify-between gap-4 group ${
-              isDark ? 'border-slate-800 hover:border-emerald-500/40' : 'border-amber-200 hover:border-emerald-400'
+              isDark ? 'border-slate-800 hover:border-emerald-500/40' : 'border-amber-200 hover:border-emerald-400 shadow-sm'
             }`}>
               <div className="flex items-start gap-4">
                 <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${
@@ -233,7 +236,7 @@ export default function Contact() {
 
             {/* Location */}
             <div className={`glass-card p-6 rounded-3xl border flex items-start gap-4 ${
-              isDark ? 'border-slate-800' : 'border-amber-200'
+              isDark ? 'border-slate-800' : 'border-amber-200 shadow-sm'
             }`}>
               <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 ${
                 isDark ? 'bg-indigo-500/10 text-indigo-400' : 'bg-amber-100 text-amber-700'
@@ -267,7 +270,7 @@ export default function Contact() {
                   isDark ? 'text-slate-300 hover:text-sky-400' : 'text-slate-700 hover:text-amber-700'
                 }`}
               >
-                <Linkedin className={`w-4 h-4 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
+                <Linkedin className="w-4 h-4 text-sky-500" />
                 <span>LinkedIn</span>
               </a>
               <span className={isDark ? 'text-slate-800' : 'text-amber-200'}>|</span>
@@ -291,11 +294,11 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className="lg:col-span-7"
           >
             <div className={`glass-card p-7 sm:p-9 rounded-3xl border relative ${
-              isDark ? 'border-slate-800' : 'border-amber-200/90'
+              isDark ? 'border-slate-800' : 'border-amber-200/90 shadow-sm'
             }`}>
               <h3 className={`text-xl font-bold flex items-center gap-2 mb-2 font-serif ${
                 isDark ? 'text-white' : 'text-slate-900'

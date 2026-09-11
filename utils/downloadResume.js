@@ -1,10 +1,10 @@
 import confetti from 'canvas-confetti';
-import { personalInfo, educationData, certificationsData, projectsData } from '../data/portfolioData';
+import { personalInfo, educationData, certificationsData, projectsData, experienceData, skillsData } from '../data/portfolioData';
 
 export function downloadResume() {
   confetti({
-    particleCount: 60,
-    spread: 65,
+    particleCount: 65,
+    spread: 70,
     origin: { y: 0.6 }
   });
 
@@ -12,177 +12,229 @@ export function downloadResume() {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vinayak Gupta - Full-Stack Developer Resume</title>
+  <title>Vinayak Gupta - Resume</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-    body {
-      font-family: 'Inter', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 30px;
-      color: #1e293b;
-      background: #ffffff;
-      line-height: 1.45;
-      font-size: 13px;
+      padding: 0;
     }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: #0f172a;
+      background: #ffffff;
+      line-height: 1.4;
+      font-size: 11.5px;
+      padding: 36px 44px;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
     .header {
       text-align: center;
-      border-bottom: 2px solid #d97706;
-      padding-bottom: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
+
     .name {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.5px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      margin: 0;
+      color: #000000;
+      margin-bottom: 4px;
     }
-    .role {
-      font-size: 14px;
-      font-weight: 600;
-      color: #b45309;
-      margin-top: 4px;
+
+    .contact-info {
+      font-size: 11px;
+      color: #334155;
+      margin-bottom: 3px;
     }
-    .contact-bar {
-      margin-top: 8px;
-      font-size: 11.5px;
-      color: #475569;
+
+    .links {
+      font-size: 11px;
     }
-    .contact-bar a {
-      color: #b45309;
-      text-decoration: none;
-      font-weight: 600;
+
+    .links a {
+      color: #0284c7;
+      text-decoration: underline;
+      margin: 0 4px;
     }
+
     .section-title {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      color: #b45309;
-      border-bottom: 1.5px solid #e2e8f0;
-      padding-bottom: 3px;
+      color: #000000;
+      border-bottom: 1.5px solid #000000;
+      padding-bottom: 2px;
       margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    .entry {
       margin-bottom: 8px;
     }
-    .summary {
-      color: #334155;
-      font-size: 12px;
-      text-align: justify;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      font-size: 12px;
-    }
-    .project-item {
-      margin-bottom: 10px;
-    }
-    .project-header {
+
+    .entry-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 11.5px;
       color: #0f172a;
     }
-    .project-tech {
+
+    .entry-sub {
       font-size: 11px;
-      color: #64748b;
-      font-weight: normal;
-    }
-    ul {
-      margin: 4px 0 0 0;
-      padding-left: 18px;
-    }
-    li {
-      margin-bottom: 3px;
-      font-size: 12px;
       color: #334155;
+      margin-bottom: 2px;
     }
-    .edu-item, .cert-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-      font-size: 12px;
+
+    .entry-sub a {
+      color: #0284c7;
+      text-decoration: underline;
     }
-    .cert-id {
-      font-family: monospace;
-      background: #fef3c7;
-      padding: 1px 6px;
-      border-radius: 4px;
-      color: #92400e;
+
+    ul {
+      padding-left: 18px;
+      margin-top: 2px;
+    }
+
+    li {
+      margin-bottom: 2.5px;
+      color: #1e293b;
       font-size: 11px;
-      font-weight: bold;
+      line-height: 1.4;
+      text-align: justify;
     }
+
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 11px;
+    }
+
+    .skills-grid span strong {
+      color: #000000;
+    }
+
     @media print {
-      body { padding: 15px; }
-      @page { margin: 12mm; }
+      body {
+        padding: 20px 30px;
+      }
+      @page {
+        margin: 10mm;
+      }
     }
   </style>
 </head>
 <body>
+
   <div class="header">
-    <h1 class="name">${personalInfo.name}</h1>
-    <div class="role">${personalInfo.role}</div>
-    <div class="contact-bar">
-      ${personalInfo.location} • ${personalInfo.phone} • <a href="mailto:${personalInfo.email}">${personalInfo.email}</a> • <a href="${personalInfo.linkedin}">LinkedIn</a> • <a href="${personalInfo.github}">GitHub</a>
+    <h1 class="name">VINAYAK GUPTA</h1>
+    <div class="contact-info">
+      Jaunpur, Uttar Pradesh, India &nbsp;|&nbsp; 6393646581 &nbsp;|&nbsp; guptavinayak520@gmail.com
+    </div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/vinayak-gupta-066424377/" target="_blank">linkedin.com/in/vinayak-gupta-066424377</a> &nbsp;|&nbsp; 
+      <a href="https://github.com/MrVinayakGupta" target="_blank">github.com/MrVinayakGupta</a> &nbsp;|&nbsp; 
+      <a href="https://portfolio-mrvinayakgupta.vercel.app" target="_blank">portfolio-mrvinayakgupta.vercel.app</a>
     </div>
   </div>
 
-  <div class="section-title">Professional Summary</div>
-  <div class="summary">${personalInfo.summary}</div>
-
-  <div class="section-title">Technical Skills</div>
-  <div class="grid">
-    <div><strong>Languages:</strong> Java, JavaScript (ES6+), C, C++</div>
-    <div><strong>Frontend:</strong> React.js, Next.js, Tailwind CSS, Bootstrap, HTML5, CSS3</div>
-    <div><strong>Backend:</strong> Node.js, Express.js, EJS SSR, RESTful APIs</div>
-    <div><strong>Databases:</strong> MongoDB (Mongoose ODM), MySQL</div>
-    <div><strong>Architecture & Auth:</strong> JWT, Bcrypt, Multer, Cloudinary API</div>
-    <div><strong>Tools & Workflow:</strong> Git, GitHub, VS Code, Postman</div>
+  <div class="section-title">EDUCATION</div>
+  <div class="entry">
+    <div class="entry-header">
+      <span>Bachelor of Computer Application (BCA)</span>
+      <span>2023 – 2026</span>
+    </div>
+    <div class="entry-sub">Veer Bahadur Singh Purvanchal University, Jaunpur</div>
   </div>
 
-  <div class="section-title">Key Full-Stack Projects</div>
-  ${projectsData.map(p => `
-    <div class="project-item">
-      <div class="project-header">
-        <span>${p.title} <span class="project-tech">| ${p.category}</span></span>
-        <span style="font-size: 11px; font-weight: normal; color: #b45309;">GitHub: ${p.github}</span>
-      </div>
-      <ul>
-        ${p.highlights.map(h => `<li>${h}</li>`).join('')}
-      </ul>
-    </div>
-  `).join('')}
+  <div class="section-title">TECHNICAL SKILLS</div>
+  <div class="skills-grid">
+    <span><strong>Languages:</strong> Java, JavaScript, C, C++</span>
+    <span><strong>Frontend:</strong> HTML, CSS, React.js, Bootstrap, Tailwind CSS</span>
+    <span><strong>Backend:</strong> Node.js, Express.js, REST APIs</span>
+    <span><strong>Databases:</strong> MongoDB, MySQL</span>
+    <span><strong>Tools:</strong> Git, GitHub, VS Code</span>
+  </div>
 
-  <div class="section-title">Education</div>
-  ${educationData.map(e => `
-    <div class="edu-item">
-      <div>
-        <strong>${e.degree}</strong> – <span>${e.institution}</span>
-      </div>
-      <div style="font-weight: 600; color: #b45309;">${e.period}</div>
+  <div class="section-title">EXPERIENCE</div>
+  
+  <div class="entry">
+    <div class="entry-header">
+      <span>IT Support Intern — Medicover Healthcare Pvt Ltd</span>
+      <span>Sep 2025 – Dec 2025</span>
     </div>
-  `).join('')}
+    <ul>
+      <li>Installed, configured, and maintained desktops, laptops, printers, and other peripherals; supported end-user onboarding with device setup and software installation.</li>
+      <li>Diagnosed and resolved technical issues for end users via phone, email, and in person, minimizing downtime.</li>
+      <li>Monitored and maintained computer systems, networks, and servers to ensure operational reliability.</li>
+      <li>Tracked IT asset inventory across hardware and software resources.</li>
+    </ul>
+  </div>
 
-  <div class="section-title">Verified Certifications</div>
-  ${certificationsData.map(c => `
-    <div class="cert-item">
-      <div>
-        <strong>${c.title}</strong> – <span>${c.issuer}</span>
-        ${c.credentialId ? `<span class="cert-id" style="margin-left: 8px;">ID: ${c.credentialId}</span>` : ''}
-      </div>
-      <div style="font-weight: 600; color: #059669;">Verified</div>
+  <div class="entry">
+    <div class="entry-header">
+      <span>Data Analyst Intern — KDSG Super-Speciality Hospital</span>
+      <span>3 months</span>
     </div>
-  `).join('')}
+    <ul>
+      <li>Managed and structured large-scale datasets in Microsoft Excel, maintaining 99%+ data accuracy across operational and financial records.</li>
+      <li>Conducted end-to-end data cleaning and quantitative analysis on large financial datasets to uncover key trends and support leadership decision-making.</li>
+      <li>Automated routine data entry and validation workflows via dynamic templates and macros, reducing manual processing time by over 30%.</li>
+      <li>Designed interactive executive dashboards and reports using Pivot Tables and dynamic visualizations to deliver actionable business insights.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">PROJECTS</div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span>TravelNest — Full-Stack Travel &amp; Accommodation Booking Platform</span>
+    </div>
+    <div class="entry-sub">
+      GitHub: <a href="https://github.com/MrVinayakGupta/TravelNest" target="_blank">github.com/MrVinayakGupta/TravelNest</a> &nbsp;|&nbsp; 
+      Live Demo: <a href="https://travelnest-t3z3.onrender.com" target="_blank">travelnest-t3z3.onrender.com</a>
+    </div>
+    <ul>
+      <li>Engineered a scalable RESTful API and backend ecosystem using Node.js and Express, reducing overall server response times by 20% through custom asynchronous middleware.</li>
+      <li>Designed efficient NoSQL data pipelines in MongoDB, using advanced indexing and schema optimization to accelerate data retrieval speeds by 35% for dynamic property listings.</li>
+      <li>Optimized frontend delivery for SEO and speed using EJS server-side rendering (SSR), achieving a near-perfect 98/100 Lighthouse score for UI responsiveness.</li>
+      <li>Built a robust authentication system to secure protected routes, session state, and verified user reviews.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span>Pinspire — Full-Stack Photo Management Platform (MERN Stack)</span>
+    </div>
+    <ul>
+      <li>Engineered a full-stack photo-sharing platform using the MERN stack, implementing JWT-based authentication and Bcrypt hashing to improve user data security by 30%.</li>
+      <li>Architected global error-handling middleware and Mongoose schema validations, reducing API response redundancy by 20%.</li>
+      <li>Streamlined image management by integrating Multer and the Cloudinary API, offloading server storage and boosting image loading speeds by 50% via CDN delivery.</li>
+      <li>Developed a responsive Masonry grid in React using the Context API, improving state management and reducing component re-renders by 15%.</li>
+      <li>Implemented dynamic routing and environment-based configuration, maintaining 100% data integrity across production environments.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">CERTIFICATIONS</div>
+  <ul>
+    <li>Delta – Full Stack Web Development, Apna College</li>
+    <li>Scaler Certified React Bootcamp Masterclass, Scaler</li>
+  </ul>
 
   <script>
     window.onload = function() {
       setTimeout(function() {
         window.print();
-      }, 300);
+      }, 250);
     };
   </script>
 </body>

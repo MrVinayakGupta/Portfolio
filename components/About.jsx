@@ -13,7 +13,6 @@ import {
 import { personalInfo } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
 import LineDivider from './LineDivider';
-import { MaskedHeading } from './AnimatedText';
 
 export default function About() {
   const { isDark } = useTheme();
@@ -59,8 +58,14 @@ export default function About() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Masked Typography */}
-        <div className="flex flex-col items-start mb-8">
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start mb-8"
+        >
           <div className="flex items-center gap-2 text-xs font-mono mb-3">
             <span className="w-2 h-2 rounded-full bg-amber-500"></span>
             <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>PHILOSOPHY & PRACTICE</span>
@@ -68,20 +73,18 @@ export default function About() {
             <span className={isDark ? "text-slate-400" : "text-slate-600"}>ABOUT VINAYAK</span>
           </div>
           
-          <MaskedHeading>
-            <h2 className={`text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-serif uppercase leading-[0.95] ${
-              isDark ? 'text-white' : 'text-slate-900'
-            }`}>
-              Engineering for the Way <span className="gradient-accent italic block sm:inline font-normal">People Work</span>
-            </h2>
-          </MaskedHeading>
+          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
+            Engineering Digital Systems for <span className="gradient-accent italic block sm:inline">Modern Scale</span>
+          </h2>
 
           <p className={`max-w-2xl mt-4 text-sm sm:text-base leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Approaching software architecture with clarity, structural precision, and close attention to detail—from schema design to fluid user interfaces.
+            Approaching software architecture with clarity, structural precision, and close attention to detail—from database design to fluid user interfaces.
           </p>
-        </div>
+        </motion.div>
 
         <LineDivider />
 
@@ -93,7 +96,7 @@ export default function About() {
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8 }}
             className={`lg:col-span-7 glass-card rounded-3xl p-7 sm:p-10 flex flex-col justify-between ${
               isDark ? 'text-slate-200' : 'text-slate-800'
             }`}
@@ -150,7 +153,7 @@ export default function About() {
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className="lg:col-span-5 grid grid-cols-2 gap-4"
           >
             {personalInfo.stats.map((stat, idx) => (
@@ -182,7 +185,7 @@ export default function About() {
 
         </div>
 
-        {/* 4 Pillars Grid (Architectural Style) */}
+        {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((item, idx) => {
             const Icon = item.icon;
@@ -192,7 +195,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
                 whileHover={{ y: -5 }}
                 className={`glass-card p-6 rounded-3xl border transition-all duration-300 relative ${
                   isDark ? 'border-slate-800/80 hover:bg-slate-900/60' : 'border-amber-200/80 hover:bg-white'

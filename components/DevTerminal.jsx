@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Terminal as TerminalIcon, CornerDownLeft, Trash2, Copy, Check } from 'lucide-react';
 import { terminalCommands } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
+import LineDivider from './LineDivider';
 
 export default function DevTerminal() {
   const { isDark } = useTheme();
@@ -16,10 +17,10 @@ export default function DevTerminal() {
     }
   ]);
   const [copied, setCopied] = useState(false);
-  const bottomRef = useRef(null);
+  const terminalBodyRef = useRef(null);
   const inputRef = useRef(null);
 
-  const quickCommands = ['help', 'skills', 'projects', 'education', 'certs', 'contact'];
+  const quickCommands = ['help', 'skills', 'projects', 'experience', 'education', 'certs', 'contact'];
 
   const executeCommand = (cmd) => {
     const trimmed = cmd.trim().toLowerCase();
@@ -48,8 +49,11 @@ export default function DevTerminal() {
     setInput('');
   };
 
+  // Only scroll inside the terminal container itself, never scroll the whole window
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (history.length > 1 && terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const copyTerminalOutput = () => {
@@ -65,41 +69,43 @@ export default function DevTerminal() {
     }`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Architectural Index */}
+        {/* Section Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start mb-12 border-b pb-6"
-          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start mb-8"
         >
-          <div className="flex items-center gap-2 text-xs font-mono mb-2">
-            <span className={isDark ? "text-purple-400 font-bold" : "text-amber-700 font-bold"}>Fig. 06 / 06</span>
-            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
-            <span className={isDark ? "text-slate-400" : "text-slate-600"}>INTERACTIVE CONSOLE & QUERY ENGINE</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-3">
+            <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+            <span className={isDark ? "text-purple-400 font-bold" : "text-amber-700 font-bold"}>INTERACTIVE CONSOLE</span>
+            <span className="opacity-40">/</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>DEVELOPER PLAYGROUND</span>
           </div>
           
           <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight font-serif ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Developer <span className="gradient-accent italic">CLI Playground</span>
+            Interactive <span className="gradient-accent italic">CLI Playground</span>
           </h2>
-          
-          <p className={`max-w-md mt-2 text-xs sm:text-sm leading-relaxed ${
+
+          <p className={`max-w-md mt-4 text-xs sm:text-sm leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
             Run real-time console commands to inspect Vinayak's technical profile directly.
           </p>
         </motion.div>
 
+        <LineDivider />
+
         {/* Minimalist Terminal Window */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.96, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`rounded-3xl border shadow-2xl overflow-hidden ${
+          transition={{ duration: 0.8 }}
+          className={`rounded-3xl border shadow-2xl overflow-hidden my-10 ${
             isDark 
               ? 'bg-[#0a0f1d] border-slate-800' 
               : 'bg-white border-amber-300 shadow-luxury'
@@ -171,6 +177,7 @@ export default function DevTerminal() {
 
           {/* Terminal Body */}
           <div 
+            ref={terminalBodyRef}
             className={`p-6 font-mono text-xs sm:text-sm min-h-[220px] max-h-[340px] overflow-y-auto space-y-3 cursor-text ${
               isDark ? 'text-slate-300' : 'text-slate-800'
             }`}
@@ -194,7 +201,6 @@ export default function DevTerminal() {
                 )}
               </div>
             ))}
-            <div ref={bottomRef} />
           </div>
 
           {/* Terminal Input Form */}
@@ -210,7 +216,7 @@ export default function DevTerminal() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type command ('help', 'skills', 'projects', 'contact')..."
+              placeholder="Type command ('help', 'skills', 'projects', 'experience', 'contact')..."
               className={`flex-1 bg-transparent border-none text-xs sm:text-sm font-mono focus:outline-none focus:ring-0 ${
                 isDark 
                   ? 'text-white placeholder:text-slate-600' 

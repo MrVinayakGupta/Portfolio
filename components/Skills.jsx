@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { skillsData } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
+import LineDivider from './LineDivider';
 
 export default function Skills() {
   const { isDark } = useTheme();
@@ -46,21 +47,21 @@ export default function Skills() {
     <section id="skills" className={`py-28 relative transition-colors duration-300 ${
       isDark ? 'bg-[#080d1a]/50' : 'bg-[#f7f5f0]/60'
     }`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header with Architectural Index */}
+        {/* Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start mb-12 border-b pb-6"
-          style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start mb-8"
         >
-          <div className="flex items-center gap-2 text-xs font-mono mb-2">
-            <span className={isDark ? "text-indigo-400 font-bold" : "text-amber-700 font-bold"}>Fig. 03 / 06</span>
-            <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
-            <span className={isDark ? "text-slate-400" : "text-slate-600"}>TECHNICAL STACK & COMPETENCY</span>
+          <div className="flex items-center gap-2 text-xs font-mono mb-3">
+            <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
+            <span className={isDark ? "text-indigo-400 font-bold" : "text-amber-700 font-bold"}>TECHNICAL MATRIX</span>
+            <span className="opacity-40">/</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>CORE STACK & TOOLS</span>
           </div>
           
           <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
@@ -68,13 +69,15 @@ export default function Skills() {
           }`}>
             Engineering Skills & <span className="gradient-accent italic">Capabilities</span>
           </h2>
-          
-          <p className={`max-w-xl mt-3 text-sm leading-relaxed ${
+
+          <p className={`max-w-xl mt-4 text-sm sm:text-base leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
             A production-ready technical matrix spanning modern full-stack development, distributed REST APIs, and database engineering.
           </p>
         </motion.div>
+
+        <LineDivider />
 
         {/* Minimalist Tabs */}
         <motion.div 
@@ -82,7 +85,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap justify-start items-center gap-2 mb-12"
+          className="flex flex-wrap justify-start items-center gap-2 my-10"
         >
           {categories.map((cat) => {
             const Icon = cat.icon;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Marquee from '../components/Marquee';
@@ -18,6 +18,16 @@ import { useTheme } from '../components/ThemeProvider';
 export default function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const { isDark } = useTheme();
+
+  // Ensure page always starts at the top (Hero) when loaded or refreshed
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   return (
     <div className={`min-h-screen transition-colors duration-400 select-auto ${

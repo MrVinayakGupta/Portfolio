@@ -19,7 +19,6 @@ import { projectsData } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
 import ProjectModal from './ProjectModal';
 import LineDivider from './LineDivider';
-import { MaskedHeading } from './AnimatedText';
 
 export default function Projects() {
   const { isDark } = useTheme();
@@ -31,47 +30,56 @@ export default function Projects() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Palomino Masked Typography */}
-        <div className="flex flex-col items-start mb-12">
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start mb-8"
+        >
           <div className="flex items-center gap-2 text-xs font-mono mb-3">
             <span className="w-2 h-2 rounded-full bg-sky-500"></span>
-            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>SELECTED WORK</span>
+            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>SELECTED PRODUCTION WORK</span>
             <span className="opacity-40">/</span>
-            <span className={isDark ? "text-slate-400" : "text-slate-600"}>PRODUCTION APPLICATIONS</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>FULL-STACK APPLICATIONS</span>
           </div>
           
-          <MaskedHeading>
-            <h2 className={`text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-serif uppercase ${
-              isDark ? 'text-white' : 'text-slate-900'
-            }`}>
-              Featured Case Studies
-            </h2>
-          </MaskedHeading>
+          <h2 className={`text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
+            Featured <span className="gradient-accent italic">Case Studies</span>
+          </h2>
 
           <p className={`max-w-2xl mt-4 text-sm sm:text-base leading-relaxed ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Engineering high-throughput, verified full-stack applications with modular architectures, custom REST APIs, and MongoDB pipelines.
+            Production-grade full-stack web applications featuring high-performance REST APIs, MongoDB data pipelines, secure authentication, and modern React interfaces.
           </p>
-        </div>
+        </motion.div>
 
         <LineDivider />
 
-        {/* Editorial Project Showcase List (Palomino style) */}
-        <div className="space-y-12 my-12">
+        {/* Sticky Stacking Cards Container */}
+        <div className="relative my-12 space-y-16">
           {projectsData.map((project, idx) => (
             <motion.div
               key={project.id}
               data-cursor-project="true"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.85, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className={`glass-card rounded-3xl border transition-all duration-400 overflow-hidden group ${
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.7, delay: idx * 0.1 }}
+              className={`sticky rounded-3xl border transition-all duration-300 overflow-hidden shadow-2xl ${
                 isDark 
-                  ? 'border-slate-800/90 hover:border-sky-500/50 hover:shadow-luxury-dark' 
-                  : 'border-amber-200/90 hover:border-amber-400 hover:shadow-luxury'
+                  ? 'bg-[#0a0f1d] border-slate-800 hover:border-sky-500/50' 
+                  : 'bg-white border-amber-200/90 hover:border-amber-400 shadow-luxury'
               }`}
+              style={{
+                top: `calc(7rem + ${idx * 24}px)`,
+                zIndex: idx + 10,
+                marginBottom: idx === projectsData.length - 1 ? '0' : '3rem'
+              }}
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch p-7 sm:p-10">
                 
@@ -99,25 +107,25 @@ export default function Projects() {
                       </span>
 
                       <span className="text-xs font-mono opacity-50">
-                        // 0{idx + 1}
+                        // PROJECT 0{idx + 1}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className={`text-3xl sm:text-5xl font-extrabold font-serif tracking-tight transition-colors ${
-                      isDark ? 'text-white group-hover:text-sky-300' : 'text-slate-900 group-hover:text-amber-700'
+                    <h3 className={`text-3xl sm:text-4xl font-extrabold font-serif tracking-tight ${
+                      isDark ? 'text-white' : 'text-slate-900'
                     }`}>
                       {project.title}
                     </h3>
                     
                     <p className={`text-sm sm:text-base font-semibold ${
-                      isDark ? 'text-slate-300' : 'text-slate-700'
+                      isDark ? 'text-sky-400' : 'text-amber-700'
                     }`}>
                       {project.subtitle}
                     </p>
 
                     <p className={`text-xs sm:text-sm leading-relaxed ${
-                      isDark ? 'text-slate-400' : 'text-slate-600'
+                      isDark ? 'text-slate-300' : 'text-slate-600'
                     }`}>
                       {project.summary}
                     </p>
@@ -141,8 +149,8 @@ export default function Projects() {
                           key={i}
                           className={`px-3 py-1 rounded-full text-xs font-mono border ${
                             isDark 
-                              ? 'bg-slate-900/90 text-slate-300 border-slate-800' 
-                              : 'bg-white text-slate-700 border-amber-200 shadow-sm'
+                              ? 'bg-slate-900 text-slate-300 border-slate-800' 
+                              : 'bg-amber-50/70 text-slate-700 border-amber-200 shadow-sm'
                           }`}
                         >
                           {t}
@@ -166,7 +174,7 @@ export default function Projects() {
                           ? 'bg-gradient-to-r from-sky-500 to-indigo-600 shadow-sky-500/20' 
                           : 'bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 shadow-amber-500/25'
                       }`}
-                      title="Visit Live Website"
+                      title="Visit Live Website Demo"
                     >
                       <Globe className="w-4 h-4" />
                       <span>Live Website Demo</span>
@@ -182,7 +190,7 @@ export default function Projects() {
                       }`}
                     >
                       <Info className={`w-4 h-4 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
-                      <span>System Architecture</span>
+                      <span>System Blueprint</span>
                     </button>
 
                     <a
@@ -202,36 +210,36 @@ export default function Projects() {
 
                 </div>
 
-                {/* Right Column: Architectural Metrics & Specs Preview */}
+                {/* Right Column: Key Performance Metrics & Architecture Overview */}
                 <div className="lg:col-span-5 flex flex-col justify-between gap-4">
                   
-                  {/* Big Metrics Grid */}
+                  {/* Big Numerals Metrics */}
                   <div className="grid grid-cols-1 gap-3">
                     {project.metrics.map((metric, i) => (
                       <div 
                         key={i} 
                         className={`p-5 rounded-3xl border transition-all ${
                           isDark 
-                            ? 'bg-[#080d1a] border-slate-800' 
-                            : 'bg-white border-amber-200/80 shadow-sm'
+                            ? 'bg-[#060913] border-slate-800' 
+                            : 'bg-amber-50/50 border-amber-200/80 shadow-sm'
                         }`}
                       >
                         <div className="text-xs font-mono font-medium opacity-60 uppercase mb-1">{metric.label}</div>
-                        <div className={`text-2xl sm:text-4xl font-extrabold font-serif ${
+                        <div className={`text-2xl sm:text-3xl font-extrabold font-serif ${
                           isDark ? 'text-sky-400' : 'text-amber-700'
                         }`}>{metric.val}</div>
                       </div>
                     ))}
                   </div>
 
-                  {/* Architecture Mini Preview Box */}
+                  {/* Architecture Overview Box */}
                   {project.architecture && (
                     <div className={`p-5 rounded-3xl border ${
-                      isDark ? 'bg-slate-900/60 border-slate-800 text-slate-300' : 'bg-amber-50/60 border-amber-200 text-slate-700'
+                      isDark ? 'bg-slate-900/60 border-slate-800 text-slate-300' : 'bg-white border-amber-200 text-slate-700 shadow-sm'
                     }`}>
                       <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase mb-2">
                         <Layers className="w-3.5 h-3.5 text-indigo-400" />
-                        <span>Core Tech Blueprint</span>
+                        <span>Core Tech Architecture</span>
                       </div>
                       <p className="text-xs font-mono leading-relaxed opacity-80">
                         {project.architecture.backend}
@@ -251,7 +259,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7 }}
           className={`glass-card p-8 rounded-3xl border flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left ${
             isDark ? 'border-slate-800' : 'border-amber-200/90'
           }`}
@@ -261,10 +269,10 @@ export default function Projects() {
               isDark ? 'text-white' : 'text-slate-900'
             }`}>
               <Github className={`w-5 h-5 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
-              <span>Explore All Open-Source Work on GitHub</span>
+              <span>Explore More Repositories on GitHub</span>
             </h3>
             <p className={`text-xs sm:text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-              Check out full codebase branches, commits, and experiments directly on Vinayak's GitHub repository.
+              Review branches, commits, and open-source contributions directly on Vinayak's GitHub profile.
             </p>
           </div>
           

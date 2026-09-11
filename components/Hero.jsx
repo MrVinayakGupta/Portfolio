@@ -14,9 +14,9 @@ import {
   Code2, 
   Copy, 
   Check,
+  ShieldCheck,
   Sparkles,
-  ArrowUpRight,
-  ShieldCheck
+  ExternalLink
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { useTheme } from './ThemeProvider';
@@ -29,10 +29,10 @@ export default function Hero({ onOpenResume }) {
   const [roleIndex, setRoleIndex] = useState(0);
 
   const roles = [
-    "Full-Stack MERN Architect",
-    "Delta Certified Engineer",
-    "High-Scale REST API Specialist",
-    "React & Next.js Performance Crafter"
+    "Full-Stack MERN Developer",
+    "Delta Certified Engineer (Apna College)",
+    "React & Next.js Performance Architect",
+    "High-Throughput REST API Specialist"
   ];
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function Hero({ onOpenResume }) {
   };
 
   return (
-    <section id="hero" className="relative min-h-[96vh] pt-36 pb-20 flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[96vh] pt-32 pb-20 flex items-center justify-center overflow-hidden">
       
       {/* Interactive 3D Three.js Constellation Canvas */}
       <ThreeCanvas theme={theme} />
@@ -67,9 +67,9 @@ export default function Hero({ onOpenResume }) {
         </>
       )}
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         
-        {/* Architectural Index Tag (ecoLINEAR inspiration) */}
+        {/* Top Status Bar */}
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -78,9 +78,9 @@ export default function Hero({ onOpenResume }) {
           style={{ borderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(217,119,6,0.18)' }}
         >
           <div className="flex items-center gap-2">
-            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>Fig. 01 / 06</span>
+            <span className={isDark ? "text-sky-400 font-bold" : "text-amber-700 font-bold"}>FULL-STACK ENGINEERING</span>
             <span className={isDark ? "text-slate-500" : "text-slate-400"}>—</span>
-            <span className={isDark ? "text-slate-400" : "text-slate-600"}>FULL-STACK ENGINEERING PRACTICE</span>
+            <span className={isDark ? "text-slate-400" : "text-slate-600"}>MERN ARCHITECTURE & APIS</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -91,7 +91,7 @@ export default function Hero({ onOpenResume }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Monumental Headline & Narrative */}
+          {/* Left Column: Headline, Role Switcher & Narrative */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,12 +99,11 @@ export default function Hero({ onOpenResume }) {
             className="lg:col-span-7 flex flex-col items-start space-y-6"
           >
             
-            {/* Tagline */}
             <div className="space-y-2">
               <p className={`text-xs sm:text-sm font-mono font-bold tracking-widest uppercase ${
                 isDark ? 'text-sky-400' : 'text-amber-700'
               }`}>
-                Computer Science Graduate & MERN Engineer
+                Computer Science Graduate & Full-Stack Engineer
               </p>
               
               <h1 className={`text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight font-serif leading-[0.95] ${
@@ -122,11 +121,11 @@ export default function Hero({ onOpenResume }) {
               </div>
             </div>
 
-            {/* Editorial Bio */}
+            {/* Bio Narrative */}
             <p className={`text-sm sm:text-base leading-relaxed max-w-xl font-normal ${
               isDark ? 'text-slate-300' : 'text-slate-600'
             }`}>
-              BCA Graduate (2023–2026, VBS Purvanchal University) & Delta Full-Stack Web Development certified engineer. Creating resilient <strong className={isDark ? "text-sky-400" : "text-amber-700"}>MERN stack</strong> architectures, sub-100ms REST APIs, and 98/100 Lighthouse-optimized digital experiences.
+              BCA Graduate (2023–2026, VBS Purvanchal University) & Delta Full-Stack Web Development certified engineer from Apna College. Designing scalable <strong className={isDark ? "text-sky-400" : "text-amber-700"}>MERN stack</strong> architectures, resilient REST APIs, and 98/100 Lighthouse-optimized digital experiences.
             </p>
 
             {/* Quick Metadata Chips */}
@@ -169,11 +168,11 @@ export default function Hero({ onOpenResume }) {
                     : 'bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 shadow-amber-500/30'
                 }`}
               >
-                <span>Explore Case Studies</span>
+                <span>Explore Projects</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
-              {/* Direct Resume Download */}
+              {/* Direct ATS Resume Download */}
               <button
                 onClick={downloadResume}
                 className={`flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-xs sm:text-sm text-white shadow-md transition-all hover:scale-105 active:scale-95 ${
@@ -181,7 +180,7 @@ export default function Hero({ onOpenResume }) {
                     ? 'bg-slate-800 hover:bg-slate-700 border border-slate-700'
                     : 'bg-gradient-to-r from-amber-600 to-yellow-600 shadow-amber-500/20'
                 }`}
-                title="Download Official Resume PDF"
+                title="Download Official ATS Resume PDF"
               >
                 <Download className="w-4 h-4" />
                 <span>Download Resume (PDF)</span>
@@ -204,10 +203,25 @@ export default function Hero({ onOpenResume }) {
             {/* Social Channels */}
             <div className="flex items-center gap-3 pt-2">
               <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className={`p-2.5 rounded-full border transition-all hover:scale-110 flex items-center gap-2 px-4 text-xs font-bold ${
+                  isDark
+                    ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white hover:border-sky-500/50'
+                    : 'bg-white border-amber-200 text-slate-700 hover:text-amber-700 hover:border-amber-400 shadow-sm'
+                }`}
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-4 h-4 text-sky-500" />
+                <span>LinkedIn</span>
+              </a>
+
+              <a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noreferrer"
-                className={`p-2.5 rounded-full border transition-all hover:scale-110 ${
+                className={`p-2.5 rounded-full border transition-all hover:scale-110 flex items-center gap-2 px-4 text-xs font-bold ${
                   isDark
                     ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white hover:border-sky-500/50'
                     : 'bg-white border-amber-200 text-slate-700 hover:text-amber-700 hover:border-amber-400 shadow-sm'
@@ -215,20 +229,7 @@ export default function Hero({ onOpenResume }) {
                 aria-label="GitHub Profile"
               >
                 <Github className="w-4 h-4" />
-              </a>
-              
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className={`p-2.5 rounded-full border transition-all hover:scale-110 ${
-                  isDark
-                    ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white hover:border-sky-500/50'
-                    : 'bg-white border-amber-200 text-slate-700 hover:text-amber-700 hover:border-amber-400 shadow-sm'
-                }`}
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="w-4 h-4" />
+                <span>GitHub</span>
               </a>
               
               <a
@@ -246,7 +247,7 @@ export default function Hero({ onOpenResume }) {
 
           </motion.div>
 
-          {/* Right Column: Architectural Blueprint Card */}
+          {/* Right Column: Code Blueprint Spec Card */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -282,7 +283,7 @@ export default function Hero({ onOpenResume }) {
                     isDark ? 'text-slate-400' : 'text-amber-900'
                   }`}>
                     <Code2 className={`w-3.5 h-3.5 ${isDark ? 'text-sky-400' : 'text-amber-600'}`} />
-                    <span>system.spec.json</span>
+                    <span>vinayak.spec.json</span>
                   </div>
                   
                   <div className={`text-[10px] font-mono px-2 py-0.5 rounded-full border font-bold flex items-center gap-1 ${
@@ -304,6 +305,9 @@ export default function Hero({ onOpenResume }) {
                     <span className={isDark ? "text-slate-400" : "text-slate-500"}>engineer:</span> <span className={isDark ? "text-emerald-300" : "text-emerald-700 font-semibold"}>"{personalInfo.name}"</span>,
                   </div>
                   <div className="pl-4">
+                    <span className={isDark ? "text-slate-400" : "text-slate-500"}>education:</span> <span className={isDark ? "text-amber-300" : "text-amber-700 font-semibold"}>"BCA (2023–2026, VBSPU)"</span>,
+                  </div>
+                  <div className="pl-4">
                     <span className={isDark ? "text-slate-400" : "text-slate-500"}>credentials:</span> [
                     <span className={isDark ? "text-amber-300" : "text-amber-700 font-bold"}>"Delta Apna College"</span>, <span className={isDark ? "text-amber-300" : "text-amber-700 font-bold"}>"Scaler React"</span>
                     ],
@@ -314,12 +318,12 @@ export default function Hero({ onOpenResume }) {
                     ],
                   </div>
                   <div className="pl-4">
-                    <span className={isDark ? "text-slate-400" : "text-slate-500"}>productionApps:</span> [
+                    <span className={isDark ? "text-slate-400" : "text-slate-500"}>featuredApps:</span> [
                     <span className={isDark ? "text-emerald-300" : "text-emerald-700 font-semibold"}>"TravelNest"</span>, <span className={isDark ? "text-emerald-300" : "text-emerald-700 font-semibold"}>"Pinspire"</span>
                     ],
                   </div>
                   <div className="pl-4">
-                    <span className={isDark ? "text-slate-400" : "text-slate-500"}>credentialID:</span> <span className={isDark ? "text-amber-300" : "text-amber-800 font-semibold"}>"6a79ab1b5b9e304352072d50"</span>
+                    <span className={isDark ? "text-slate-400" : "text-slate-500"}>deltaCredentialID:</span> <span className={isDark ? "text-amber-300" : "text-amber-800 font-semibold"}>"6a79ab1b5b9e304352072d50"</span>
                   </div>
                   <div>&#125;;</div>
                   <div className={`pt-2 text-xs ${isDark ? "text-slate-500" : "text-slate-400"}`}>// Ready to build high-performance software 🚀</div>
